@@ -219,25 +219,22 @@ color: #ee5627;
 }
 
 .nav-bar li {
-	
+	text-align: left;
 }
 
 .nav-bar a {
+	text-align:left;
 	display: block;
     color: #ee5627;
-    text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .nav-bar ul {
-	width:100%;
+	text-align: left;
 	list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: white;
-}
-.nav-bar {
-	width: 100%;
 }
