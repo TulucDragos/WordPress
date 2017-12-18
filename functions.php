@@ -7,7 +7,7 @@ function onpiste_styles()
     	wp_enqueue_style('onpiste_style'); // Enqueue it!
 	}
 
-	if(is_page('Terms and Coditions'))
+	if(is_page('Terms and Conditions') || is_page('Privacy Policy') )
 	{
 		wp_register_style('onpiste_terms_style', get_template_directory_uri() . '/css/termsandcond.css', array(), '1.0', 'all');
     	wp_enqueue_style('onpiste_terms_style'); // Enqueue it!

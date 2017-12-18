@@ -100,7 +100,7 @@ min-height:400px;
 }
 
 .coming_soon{
-width: 100%;
+width: 55%;
 float: left;
 padding: 0 0 0 0;
 }
@@ -219,4 +219,41 @@ color: #ee5627;
 	clear: both;
 	width: 1024px;
 	padding-left: 10px;
+}
+.terms p {
+	color:black;
+}
+
+.nav-bar{
+	width:45%;
+	float:right;
+}
+.nav-bar li {
+	float: right;
+
+}
+.nav-bar a {
+	display: block;
+    color: #ee5627;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-bar ul {
+	width:100%;
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+.terms li {
+	color:black;
+}
+.terms ul {
+	color:black;
+}
+.terms span {
+	color: black;
 }
