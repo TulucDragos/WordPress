@@ -63,11 +63,20 @@ endif;
 					
 				</ul>
 
-							<!-- footer -->
-			<div class="footer" role="contentinfo">
+						<div class="nav-bar">
+					<ul>
+					<?php 
+						if(have_rows('navigation')):
 
-				<!-- copyright -->
-				<div class="copyright"><p>Copyright 2013. <br/> All Rights Reserved. <br/> <span><strong>drink</strong>alike</span></p></div>
+						 while ( have_rows('navigation') ) : the_row();
+					?>
+						<li><a href="<?php the_sub_field('page_link'); ?>"><strong><?php the_sub_field('name') ?></strong></a></li>
+
+						<?php
+							endwhile;
+						endif;
+						?>
+					</ul>
 				</div>
 		</div>
 	</div>

@@ -104,7 +104,7 @@ float: left;
 }
 
 .coming_soon{
-width: 345px;
+width: 30%;
 float: left;
 padding: 0 0 0 34px;
 }
@@ -219,7 +219,7 @@ color: #ee5627;
 }
 
 .nav-bar li {
-	display:inline;
+	
 }
 
 .nav-bar a {
@@ -231,9 +231,13 @@ color: #ee5627;
 }
 
 .nav-bar ul {
+	width:100%;
 	list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: white;
+}
+.nav-bar {
+	width: 100%;
 }
