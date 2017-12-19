@@ -18,23 +18,32 @@ function onpiste_styles()
 
 function onpiste_partner_only()
 {
+	//check if the user is logged in 
 	if(is_user_logged_in())
 	{
 		global $current_user;
 
     $user_roles = $current_user->roles;
+
     $user_role = array_shift($user_roles);
+    
     $url = 'http://localhost/wordpress/';
 
-	if(is_page('Partner') && $user_role != 'partner')
+	if(is_page('Partner') && $user_role != 'partner') // check if the user role is not partner 
 	{
-		wp_redirect( $url );
+		wp_redirect( $url ); // redirect to the home page 
 		exit;
 	}
+	
+	else
+	{
+		wp_redirect($url); // if the user is a logged in and it is a partner then it can access this page 
+	}
+
 	}
 	else
 	{
-		wp_redirect($url);
+		wp_redirect('http://localhost/wordpress/login'); // if the user is not logged in than it redirects the user to the login page
 	}
 	
 }
@@ -42,12 +51,12 @@ function onpiste_partner_only()
 
 function onpiste_campaign($new_status, $old_status, $post)
 {
-	if('campaign' == get_post_type()) // this is to print the message only if the post type is campaign. 
+	if('campaign' == get_post_type()) // do this only if the post type is campaign. 
 	{
 		if ( $new_status == 'publish' && $old_status != 'publish' ) 
 		{
 
-			$all_posts = get_post('campaign');
+			$all_posts = get_post('campaign'); // get all the campaign posts
 
 			$is_active = 0; 
 
@@ -55,7 +64,7 @@ function onpiste_campaign($new_status, $old_status, $post)
 			{
 					foreach($all_posts as $c_post)
 				{
-					if( get_post_status($c_post) == 'publish')
+					if( get_post_status($c_post) == 'publish') // count how many posts are active
 					{
 						$is_active++;
 					}
@@ -63,12 +72,12 @@ function onpiste_campaign($new_status, $old_status, $post)
 			}
 			
 
-			if($is_active > 0 )
+			if($is_active > 0 ) // check if there is anyother active 
 			{
-				 $post['post_status'] = 'draft';
+				 $post['post_status'] = 'draft'; // set the post as draft and display a message 
 				 ?>
    				 <div class="error notice">
-       				 <p><?php _e( 'There is already a campaign in progress', 'my_plugin_textdomain' ); ?></p>
+       				 <p><?php _e( 'There is already a campaign in progress', 'my_plugin_textdomain' ); ?></p> 
     			</div>
    				<?php
 			}
@@ -76,7 +85,7 @@ function onpiste_campaign($new_status, $old_status, $post)
 			else 
 			{
 				?>
-				<div class="notice">
+				<div class="notice"> 
        				 <p><?php _e( 'The campaign has been activated', 'my_plugin_textdomain' ); ?></p>
     			</div>
    				<?php
