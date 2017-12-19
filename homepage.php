@@ -15,6 +15,7 @@
 
 
 
+<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 	
 	<div class="top_content">
 		<div class="header">
@@ -90,6 +91,10 @@ endif;
 
 
 		<!-- /wrapper -->
-		
+	<?php 
+	endwhile;
+	endif;
+?>
+	
 
 		<?php get_footer(); ?>

@@ -10,6 +10,7 @@
 ?>
 
 
+<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
 	<div class="orange_content">
 	<div class="content_wrapper">
@@ -60,7 +61,12 @@ endif;
 					
 				</ul>
 
-							<!-- footer -->
+			
+			<?php 
+	endwhile;
+	endif;
+?>
+				<!-- footer -->
 			<footer class="footer" role="contentinfo">
 
 				<!-- copyright -->
