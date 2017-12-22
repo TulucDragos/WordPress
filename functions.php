@@ -12,8 +12,8 @@ function onpiste_styles()
 		wp_register_style('onpiste_terms_style', get_template_directory_uri() . '/css/termsandcond.css', array(), '1.0', 'all');
     	wp_enqueue_style('onpiste_terms_style'); // Enqueue it!
 	}
-    
-    if(is_page('Log In'))
+ 
+    if(is_page('Log In') || is_page('Non-Partner') || is_page('Validate') || is_page('Thank You') || is_page('Not Validated') || is_page('Existing Code'))
     {
     	wp_register_style('onpiste_login_style', get_template_directory_uri() . '/css/login.css', array(), '1.0', 'all');
     	wp_enqueue_style('onpiste_login_style'); // Enqueue it!
@@ -24,7 +24,7 @@ function onpiste_styles()
 
 function onpiste_partner_only()
 {
-	if(is_page('Partner')) // insert in this if all other pages that should only be accessible to partners and administrators
+	if(is_page('Partner') || is_page('Validate') || is_page('Thank You') || is_page('Not Validated') || is_page('Existing Code')) // insert in this if all other pages that should only be accessible to partners and administrators
 	{
 		//check if the user is logged in 
 		if(is_user_logged_in())
