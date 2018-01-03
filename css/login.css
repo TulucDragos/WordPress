@@ -8,6 +8,7 @@
   margin: -100px 0 0 -150px;
 }
 
+
 .val {
 	float:left;
 	width: 50%;
@@ -19,7 +20,7 @@
 }
 
 #valideaza{
-	background-color: #4CAF50; 
+	background-color: #4CAF50;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -29,8 +30,13 @@
     font-size: 16px;
 }
 
+#valideaza a {
+  color: white;
+  text-decoration: none;
+}
+
 #nu-valideaza {
-	background-color: #E31717; 
+	background-color: #E31717;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -38,4 +44,9 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+#nu-valideaza a {
+  color:white;
+  text-decoration:none;
 }
