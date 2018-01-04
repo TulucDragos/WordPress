@@ -39,6 +39,7 @@ $my_c = get_query_var( 'c' );
 					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
 					 <?php the_title(); ?> </h3>
+					 <h3> Number of validations: <?php the_field('redemptions'); ?> </h3>
 
 					<?php endwhile;
 					wp_reset_postdata();
