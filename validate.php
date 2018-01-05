@@ -39,7 +39,7 @@ $my_c = get_query_var( 'c' );
 					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
 					 <?php the_title(); ?> </h3>
-					 <h3> Number of validations: <?php the_field('redemptions'); ?> </h3>
+					 <h3> Number of validations: <?php the_field('redeems'); ?> </h3>
 
 					<?php endwhile;
 					wp_reset_postdata();
@@ -57,7 +57,7 @@ $my_c = get_query_var( 'c' );
 						<button id= "valideaza"><a href="<?php echo esc_url( add_query_arg( 'c', $my_c, site_url( '/thank-you/' ) ) )?>"/>Valideaza</button>
 					</div>
 					<div class="not-val">
-						<button id= "nu-valideaza"><a href="#"/>Nu acum</button>
+						<button id= "nu-valideaza"><a href="<?php echo site_url('/not-validated/') ?>"/>Nu acum</button>
 					</div>
 				</div>
 			</div>

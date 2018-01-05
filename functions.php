@@ -31,11 +31,12 @@ function onpiste_partner_only()
 		{
 			global $current_user;
 
-	   	$user_roles = $current_user->roles;
+	   		$user_roles = $current_user->roles;
 
-	   	$user_role = array_shift($user_roles);
+	   		$user_role = array_shift($user_roles);
 
-	    $url = 'http://localhost/wordpress/non-partner/';
+
+	    	$url = esc_url(site_url( '/non-partner/' ));
 
 			if( $user_role != 'partner' && $user_role != 'administrator')// check if the user role is not partner
 				{
@@ -46,7 +47,8 @@ function onpiste_partner_only()
 		}
 		else
 		{
-			wp_redirect('http://localhost/wordpress/login'); // if the user is not logged in than it redirects the user to the login page
+			$login = esc_url(site_url( '/login/' ));
+			wp_redirect($login); // if the user is not logged in than it redirects the user to the login page
 			exit;
 		}
 
@@ -86,16 +88,15 @@ function campaign_check ( $post_id)
 					{
 						 $_POST['post_status'] = 'Draft'; // set the post as draft and display a message
 						 echo $_POST['post_status'];
-						 remove_action('save_post', 'campaign_check'); // un-hook the function because it is called when updating a post
+						 remove_action('save_post', 'campaign_check'); // un-hook the action because it is called when updating a post
 						 wp_update_post($_POST); // update the post
-						 add_action('save_post', 'campaign_check'); // re-hook the function
+						 add_action('save_post', 'campaign_check'); // re-hook the action
 
 						 ?>
 		   				 <div class="error notice">
 		       				 <p><?php _e( 'There is already a campaign in progress', 'my_plugin_textdomain' ); ?></p>
 		    			 </div>
-		   				<?php
-		   				print_r($_POST);
+		   				<?php		   				
 					}
 
 					else
@@ -120,6 +121,11 @@ function add_custom_query_var( $vars ){
   return $vars;
 }
 
+function add_custom_query_var_time( $vars ){
+  $vars[] = "t";
+  return $vars;
+}
+
 
 function user_code_validation()
 {
@@ -128,22 +134,25 @@ function user_code_validation()
 		global $wpdb;
 		global $current_user;
 		static $active_campaign_id;
-		static $active_campaign_redemptions;
+		static $active_campaign_redeems;
 
 		$my_c = get_query_var( 'c' );		
 
+		//get the current active campaign
 		$my_post = new WP_Query(array(
         				'post_type' => 'campaign',
         				'post_status' =>'publish'
     					) );
 
+
+		//get the id and the number of redemptions of the active campaign 
 		if ( $my_post->have_posts() )
 		{
 			while ( $my_post->have_posts() )
 			{
 				$my_post->the_post(); 
 				$active_campaign_id = get_the_ID();
-				$active_campaign_redemptions = get_field('redemptions');
+				$active_campaign_redeems = get_field('redeems');
 			} 
 		}
 
@@ -154,16 +163,14 @@ function user_code_validation()
 
 		if(is_page('Thank You') && $my_c != "")
 		{
-			print_r("variable was found <br />");
-
+			
+			// select all the ucodes
 			$sql = "
 			select *
 			from $table_name;
 			";
 
-			print_r($active_campaign_id);
-			print_r("<br />");
-			print_r($active_campaign_redemptions);
+			
 			$codes = $wpdb->get_results($sql, OBJECT);
 
 			if ($codes)
@@ -174,13 +181,16 @@ function user_code_validation()
 					if($code->user_code == $my_c)
 						{	
 							$found = 1;
+							$my_t = $code->validation_time;
 							if($code->campaign_id == $active_campaign_id)
 							{
-								wp_redirect("http://localhost/wordpress/existing-code/"); // redirect the user to a page with the message "this code has already been validated during this campaign"
+								$existing_code_url = esc_url( add_query_arg( 't', $my_t, site_url( '/existing-code/' ) ) );
+								wp_redirect($existing_code_url); // redirect the user to a page with the message "this code has already been validated during this campaign"
 								exit;
 							}
 							else
 							{
+								//update the partner id, the campaign id and the validation time
 								$wpdb -> update (
 									$table_name,
 									array (
@@ -190,16 +200,21 @@ function user_code_validation()
 									),
 									array( 'user_code' => $my_c)
 								);
-														
-								$active_campaign_redemptions++;
-								wp_update_post($my_post);
-								//increment the number of validations for the current campaign
+									
+								//increment the number of validations for the current campaign						
+								update_post_meta($active_campaign_id,
+								 'redeems',
+								 $active_campaign_redeems+1,
+								  $active_campaign_redeems );
+
+								
+								
 							}
 						}
 				}
 		}
 
-		if($found == 0) // this will run only if this a brand new user code
+		if($found == 0) // this will run only if this a brand new code
 		{
 			$wpdb->insert(
 				$table_name,
@@ -210,27 +225,22 @@ function user_code_validation()
 					'validation_time' => current_time('mysql'),
 				)
 			);
-			$active_campaign_redemptions++;
-			wp_update_post($my_post);
 			//increment the number of validations for the current campaign
+			update_post_meta($active_campaign_id,
+								 'redeems',
+								 $active_campaign_redeems+1,
+								  $active_campaign_redeems );
+			
 
 		}
 				
 
-				//query the db and check if the code is already there
-
-				//if it's not there add the code to the DB and set the campaign ID, partner ID who validated it, the exact time that it was validated and increment the number of validations for the active campaign
-
-				//if the code is in the db, check if it was valided during this campaign
-
-				// if it was validated during this campaign redirect the user to a page with the message "this code was already validated during this campaign"
-
-				// if it was not validated during this campaign set the campaign ID, the partner that validated the code, the exact time and increment the number of validations for the active campaign
-
+				
 			}
+			//if the sent code is not a valid one, or the QR didn't work
 			else
-			{
-				wp_redirect("http://localhost/wordpress/not-a-valid-code/");
+			{	$not_a_valid_code_url = esc_url(site_url('/not-a-valid-code/'));
+				wp_redirect($not_a_valid_code_url);
 				exit;
 				
 			}
@@ -239,7 +249,8 @@ function user_code_validation()
 	
 }
 
-add_filter('query_vars', 'add_custom_query_var' );
+add_filter('query_vars', 'add_custom_query_var');
+add_filter('query_vars', 'add_custom_query_var_time');
 add_action('save_post', 'campaign_check');
 add_action('wp', 'onpiste_partner_only');
 add_action('wp', 'user_code_validation');
