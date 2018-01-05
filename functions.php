@@ -91,17 +91,22 @@ function campaign_check ( $post_id)
 						 remove_action('save_post', 'campaign_check'); // un-hook the action because it is called when updating a post
 						 wp_update_post($_POST); // update the post
 						 add_action('save_post', 'campaign_check'); // re-hook the action
+						 
+						 //diplay the message for the user 
+		       		   	 ?>
 
-						 ?>
-		   				 <div class="error notice">
-		       				 <p><?php _e( 'There is already a campaign in progress', 'my_plugin_textdomain' ); ?></p>
+						 <div class="error">
+		       				 <p><?php _e( 'There is already an active campaign', 'my_plugin_textdomain' ); ?></p>
 		    			 </div>
-		   				<?php		   				
+
+		   				 <?php
+
 					}
 
 					else
 
 					{
+						//diplay the message for the user 
 						?>
 						<div class="notice">
 		       				 <p><?php _e( 'The campaign has been activated', 'my_plugin_textdomain' ); ?></p>
@@ -160,7 +165,6 @@ function user_code_validation()
 
 		static $table_name = "wp_ucode";
 		
-
 		if(is_page('Thank You') && $my_c != "")
 		{
 			
@@ -206,9 +210,7 @@ function user_code_validation()
 								 'redeems',
 								 $active_campaign_redeems+1,
 								  $active_campaign_redeems );
-
-								
-								
+			
 							}
 						}
 				}
@@ -231,11 +233,8 @@ function user_code_validation()
 								 $active_campaign_redeems+1,
 								  $active_campaign_redeems );
 			
-
 		}
-				
-
-				
+							
 			}
 			//if the sent code is not a valid one, or the QR didn't work
 			else
@@ -244,8 +243,7 @@ function user_code_validation()
 				exit;
 				
 			}
-	}
-	
+	}	
 	
 }
 
