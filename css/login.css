@@ -1,6 +1,5 @@
 .content_wrapper{
   position: absolute;
-  width: 400px;
   height: 200px;
   z-index: 15;
   top: 20%;
@@ -49,4 +48,10 @@
 #nu-valideaza a {
   color:white;
   text-decoration:none;
+}
+
+@media only screen  and (max-width: 600px){
+  .content_wrapper{
+    width: 80%;
+  }
 }

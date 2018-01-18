@@ -6,6 +6,18 @@
 <?php  wp_head(); ?>
 </head>
 <?php
- $backgroundimage = get_field('background_image');
+	if(!is_page('On Piste Landing'))
+	{
+		$backgroundimage = get_field('background_image');
+	}
+ 
 ?>
 <body style="background-image: url(<?php echo $backgroundimage ?>)">
+<?php 
+	if(!is_page('On Piste Landing'))
+	{
+		?>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<?php
+	}
+?>

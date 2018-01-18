@@ -1,5 +1,7 @@
 /* Reset */
 
+
+
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,dfn,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 
 body{
@@ -17,15 +19,15 @@ padding-bottom: 30px;
 }
 
 .top_content{
-width: 980px;
+width: 100%;
 margin: 0 auto;
 padding-bottom: 10px;
 }
 
 .header{
-width: 940px;
+width: 90%;
 float: left;
-padding: 30px 20px 0;
+padding: 30px 0 0;
 }
 
 .iphone{
@@ -38,7 +40,7 @@ padding: 111px 24px 0 27px;
 }
 
 .logo_content{
-width: 550px;
+width: 100%;
 float: left;
 margin-top: 120px;
 padding-bottom: 20px;
@@ -95,7 +97,8 @@ margin: -16px 0 0 0;
 width: 100%;
 background: #fff;
 float: left;
-padding-top:10px;
+padding-top:70px;
+padding-left: 10px;
 min-height:400px;
 }
 
@@ -217,8 +220,7 @@ color: #ee5627;
 .terms {
 	padding-top:30px;
 	clear: both;
-	width: 1024px;
-	padding-left: 10px;
+	
 }
 .terms p {
 	color:black;
@@ -256,4 +258,27 @@ color: #ee5627;
 }
 .terms span {
 	color: black;
+}
+
+@media only screen and  (max-width: 590px)
+{
+
+	p.c_soon strong {
+		font-size: 30px;
+	}
+
+}
+
+@media only screen and (max-width: 410px)
+{
+
+	h1 {
+		font-size:60px;
+	}
+}
+
+.scale {
+	width:80%;
+	margin: 0 auto;
+
 }

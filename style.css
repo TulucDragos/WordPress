@@ -6,126 +6,79 @@
 	Author: Dragos Tuluc 
 */
 
-/* Reset */
-
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,dfn,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
-
-body{
-margin:0;
-padding:0;
-background: #fff url(../images/bg.jpg) top center repeat-x;
-font-family: Helvetica Neue, Helvetica, Arial;
-color: #ffffff;
+.wrapper{
+	width:80%;
+	margin:0 auto;
 }
 
-.content_wrapper{
-width: 100%;
-float: left;
-padding-bottom: 30px;
+.top_content {
+	min-height:400px;
+	background-color:#e0491a;
 }
 
-.top_content{
-width: 980px;
-margin: 0 auto;
+#cont {
 }
 
-.header{
-width: 940px;
-float: left;
-padding: 30px 20px 0;
+#orange_content {
+	background-color:#e0491a;
 }
+
+#right_content{
+	align-content: center;
+	color:white;
+	padding-right: 100px;
+	background-color:#e0491a;
+	padding-top: 100px;
+}
+
+#photo {
+	padding-top: 40px;
+}
+
 
 .iphone{
-width: 258px;
-margin-left: 24px;
-height: 388px;
-float: left;
-background: url(../images/iphone.png) left top no-repeat;
-padding: 111px 24px 0 27px;
-}
-
-.logo_content{
-width: 550px;
-float: right;
-margin-top: 120px;
-}
-
-h1{
-font-size: 81px;
-margin-bottom: 20px;
-}
-
-h3{
-font-size: 20px;
-margin-bottom: 20px;
-}
-
-p{
-font-size: 14px;
-line-height: 22px;
+	width: 258px;
+	padding-left: 24px;
+	height: 388px;
+	float: left;
+	background: url(../images/iphone.png) left top no-repeat;
+	padding: 111px 24px 0 27px;
 }
 
 a.get_notified{
-width: 440px;
-height: 57px;
-margin: 40px 0 0 0;
-float: left;
-background: url(../images/button.png) left top no-repeat;
-font-size: 26px;
-color: #ee5627;
-text-decoration: none;
-font-weight: 200;
-text-align: center;
-line-height: 54px;
-}
-
-a.get_notified strong{
-font-weight: 500;
-}
-
-
-a:hover.get_notified{
-background: url(../images/button.png) left bottom no-repeat;
-color: #ffffff;
-}
-
-.shadow{
-width: 100%;
-height: 16px;
-background: url(../images/shadow.png) repeat;
-float: left;
-margin: -16px 0 0 0;
+	width: 440px;
+	height: 57px;
+	margin: 40px 0 0 0;
+	float: left;
+	background: url(../images/button.png) left top no-repeat;
+	font-size: 26px;
+	color: #e0491a;
+	text-decoration: none;
+	font-weight: 200;
+	text-align: center;
+	line-height: 54px;
+	margin-bottom:40px;
 }
 
 .white_content{
-width: 100%;
-background: #fff;
-float: left;
-}
-
-.coming_soon{
-width: 30%;
-float: left;
-padding: 0 0 0 34px;
+	padding-top:40px;
+	background-color: white;
+	padding-bottom: 80px;
 }
 
 p.c_soon{
-color: #ee5627;
+color: #e0491a;
 font-size: 34px;
 font-weight: 200;
 line-height: 40px;
 }
 
-p.c_soon strong{
-font-size: 50px;
-}
-
 ul.social{
 float: left;
-padding: 0 23px 0 39px;
 width: 330px;
 border-right: 1px solid #fdeee9;
 border-left: 1px solid #fdeee9;
+padding:0;
 }
 
 ul.social li{
@@ -135,7 +88,7 @@ text-align: center;
 }
 
 ul.social li a{
-color: #ee5627;
+color: #e0491a;
 text-decoration: none;
 width: 90px;
 height:24px;
@@ -158,7 +111,7 @@ background: #ffffff url(../images/social.png) 34px -74px no-repeat;
 }
 
 ul.social li a:hover.googleplus{
-background: #ee5627 url(../images/social.png) -43px -74px no-repeat;
+background: #e0491a url(../images/social.png) -43px -74px no-repeat;
 }
 
 ul.social li a.twitter{
@@ -166,7 +119,7 @@ background: #ffffff url(../images/social.png) 34px 10px no-repeat;
 }
 
 ul.social li a:hover.twitter{
-background: #ee5627 url(../images/social.png) -43px 10px no-repeat;
+background: #e0491a url(../images/social.png) -43px 10px no-repeat;
 }
 
 ul.social li a.facebook{
@@ -174,7 +127,7 @@ background: #ffffff url(../images/social.png) 38px -157px no-repeat;
 }
 
 ul.social li a:hover.facebook{
-background: #ee5627 url(../images/social.png) -39px -157px no-repeat;
+background: #e0491a url(../images/social.png) -39px -157px no-repeat;
 }
 
 ul.social li a.email{
@@ -182,7 +135,7 @@ background: #ffffff url(../images/social.png) 34px -413px no-repeat;
 }
 
 ul.social li a:hover.email{
-background: #ee5627 url(../images/social.png) -43px -413px no-repeat;
+background: #e0491a url(../images/social.png) -43px -413px no-repeat;
 }
 
 ul.social li a.youtube{
@@ -190,7 +143,7 @@ background: #ffffff url(../images/social.png) 34px -242px no-repeat;
 }
 
 ul.social li a:hover.youtube{
-background: #ee5627 url(../images/social.png) -43px -242px no-repeat;
+background: #e0491a url(../images/social.png) -43px -242px no-repeat;
 }
 
 ul.social li a.pinterest{
@@ -198,24 +151,76 @@ background: #ffffff url(../images/social.png) 34px -327px no-repeat;
 }
 
 ul.social li a:hover.pinterest{
-background: #ee5627 url(../images/social.png) -43px -327px no-repeat;
-}
-
-.copyright{
-width: 140px;
-float: left;
-padding-left: 27px;
-padding-top: 35px;
+background: #e0491a url(../images/social.png) -43px -327px no-repeat;
 }
 
 .copyright p{
-font-size: 12px;
+font-size: 10px;
 color: #666666;
 }
 
 .copyright p span{
-font-size: 12px;
-color: #ee5627;
+font-size: 10px;
+color: #e0491a;
+}
+
+p.c_soon{
+color: #e0491a;
+font-size: 30px;
+font-weight: 200;
+line-height: 40px;
+}
+
+#social_links ul{
+	text-decoration: none;
+	list-style: none;
+}
+
+@media only screen and (max-width:520px){
+	a.get_notified{
+		width: 300px;
+		background: white;
+		font-size: 18px;
+		border-radius: 25px;
+	}
+
+
+}
+
+@media only screen and (max-width: 1065px) and (min-width: 930px){
+	#photo{
+		padding-left: 270px;
+	}
+
+	#right_content{
+		padding-left: 200px;
+	}
+}
+
+@media only screen and (max-width: 929px) and (min-width: 780px){
+	#right_content{
+		padding-left: 130px;
+	}
+
+	#photo{
+		padding-left: 200px;
+	}
+}
+
+@media only screen and (max-width: 779px) and (min-width: 670px){
+	#photo{
+		padding-left: 140px;
+	}
+
+	#right_content{
+		padding-left: 90px;
+	}
+}
+
+@media only screen and (max-width: 669px) and (min-width: 520px){
+	#photo{
+		padding-left: 100px;
+	}
 }
 
 .nav-bar li {
@@ -225,7 +230,7 @@ color: #ee5627;
 .nav-bar a {
 	text-align:left;
 	display: block;
-    color: #ee5627;
+    color: #e0491a;
     padding: 14px 16px;
     text-decoration: none;
 }
@@ -238,3 +243,5 @@ color: #ee5627;
     overflow: hidden;
     background-color: white;
 }
+
+

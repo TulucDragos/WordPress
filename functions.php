@@ -3,8 +3,11 @@ function onpiste_styles()
 {
 	if(is_page('On Piste Landing'))
 	{
-		wp_register_style('onpiste_style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-    wp_enqueue_style('onpiste_style'); // Enqueue it!
+		
+   		wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), '1.0', 'all');
+   		wp_enqueue_style('bootstrap');
+   		wp_register_style('onpiste_style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
+   		wp_enqueue_style('onpiste_style'); // Enqueue it!
 	}
 
 	if(is_page('Terms and Conditions') || is_page('Privacy Policy') )
@@ -91,11 +94,11 @@ function campaign_check ( $post_id)
 						 remove_action('save_post', 'campaign_check'); // un-hook the action because it is called when updating a post
 						 wp_update_post($_POST); // update the post
 						 add_action('save_post', 'campaign_check'); // re-hook the action
-						 
+						  
 						 //diplay the message for the user 
 		       		   	 ?>
 
-						 <div class="error">
+						 <div class="notice notice-error is-dismissible">
 		       				 <p><?php _e( 'There is already an active campaign', 'my_plugin_textdomain' ); ?></p>
 		    			 </div>
 
@@ -108,7 +111,7 @@ function campaign_check ( $post_id)
 					{
 						//diplay the message for the user 
 						?>
-						<div class="notice">
+						<div class="notice notice-update is-dismissible">
 		       				 <p><?php _e( 'The campaign has been activated', 'my_plugin_textdomain' ); ?></p>
 		    			</div>
 
@@ -121,6 +124,38 @@ function campaign_check ( $post_id)
 	}
 
 }
+
+function campaign_message($post_id)
+{
+	if('campaign' == get_post_type()) // do this only if the post type is campaign.
+	{
+		if($_POST['action'] == 'editpost')
+		{
+			if($_POST['post_status'] == 'Draft')
+			{
+				?>
+
+					 <div class="notice notice-error is-dismissible">
+		     			 <p><?php _e( 'There is already an active campaign', 'sample-text-domain' ); ?></p>
+		    		 </div>
+
+				 <?php
+			}
+			else
+			{
+				?>
+					<div class="notice notice-update is-dismissible">
+		       			 <p><?php _e( 'The campaign has been activated', 'sample-text-domain' ); ?></p>
+		    		</div>
+
+		   		<?php
+			}
+		}
+		
+		
+	}
+}
+
 function add_custom_query_var( $vars ){
   $vars[] = "c";
   return $vars;
@@ -130,6 +165,77 @@ function add_custom_query_var_time( $vars ){
   $vars[] = "t";
   return $vars;
 }
+
+function code_already_used()
+{
+	if(is_page('Validate'))
+	{
+		global $wpdb;
+		$my_c = get_query_var( 'c' );
+
+		if($my_c != "")
+		{
+			static $active_campaign_id;
+
+			$my_post = new WP_Query(array(
+        				'post_type' => 'campaign',
+        				'post_status' =>'publish'
+    					) );
+
+
+		//get the id and the number of redemptions of the active campaign 
+			if ( $my_post->have_posts() )
+			{
+				while ( $my_post->have_posts() )
+				{
+					$my_post->the_post(); 
+					$active_campaign_id = get_the_ID();			
+				} 
+			}
+
+			wp_reset_postdata();
+
+			static $table_name = "wp_ucode";
+
+			$sql = "
+			select *
+			from $table_name;
+			";
+
+			
+			$codes = $wpdb->get_results($sql, OBJECT);
+
+
+			if ($codes)
+			{				
+				foreach($codes as $code)
+				{
+					if($code->user_code == $my_c)
+						{	
+							
+							$my_t = $code->validation_time;
+							if($code->campaign_id == $active_campaign_id)
+							{
+								$existing_code_url = esc_url( add_query_arg( 't', $my_t, site_url( '/existing-code/' ) ) );
+								wp_redirect($existing_code_url); // redirect the user to a page with the message "this code has already been validated during this campaign"
+								exit;
+							}
+						}
+				}
+			}
+
+		}
+		/*else
+		{
+			$not_a_valid_code_url = esc_url(site_url('/not-a-valid-code'));
+			wp_redirect($not_a_valid_code_url);
+			exit;
+		}
+		*/
+
+	}
+}
+
 
 
 function user_code_validation()
@@ -250,8 +356,10 @@ function user_code_validation()
 add_filter('query_vars', 'add_custom_query_var');
 add_filter('query_vars', 'add_custom_query_var_time');
 add_action('save_post', 'campaign_check');
+add_action('wp', 'code_already_used');
 add_action('wp', 'onpiste_partner_only');
 add_action('wp', 'user_code_validation');
 add_action('wp_enqueue_scripts', 'onpiste_styles');
+add_action('admin_notices', 'campaign_message');
 
 ?>
