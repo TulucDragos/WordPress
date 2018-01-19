@@ -16,33 +16,26 @@
 	background-color:#e0491a;
 }
 
-#cont {
-}
-
 #orange_content {
 	background-color:#e0491a;
 }
 
 #right_content{
+	padding: 100px 100px 0px 40px;
 	align-content: center;
 	color:white;
-	padding-right: 100px;
 	background-color:#e0491a;
-	padding-top: 100px;
-	padding-left:40px;
 }
 
 #photo {
 	padding-top: 40px;
 }
 
-
 .iphone{
 	width: 258px;
 	padding-left: 24px;
 	height: 388px;
 	float: left;
-	background: url(../images/iphone.png) left top no-repeat;
 	padding: 111px 24px 0 27px;
 }
 
@@ -51,7 +44,6 @@ a.get_notified{
 	height: 57px;
 	margin: 40px 0 0 0;
 	float: left;
-	background: url(../images/button.png) left top no-repeat;
 	font-size: 26px;
 	color: #e0491a;
 	text-decoration: none;
@@ -68,108 +60,108 @@ a.get_notified{
 }
 
 p.c_soon{
-color: #e0491a;
-font-size: 34px;
-font-weight: 200;
-line-height: 40px;
+	color: #e0491a;
+	font-size: 34px;
+	font-weight: 200;
+	line-height: 40px;
 }
 
 ul.social{
-float: left;
-width: 330px;
-border-right: 1px solid #fdeee9;
-border-left: 1px solid #fdeee9;
-padding:0;
+	float: left;
+	width: 330px;
+	border-right: 1px solid #fdeee9;
+	border-left: 1px solid #fdeee9;
+	padding:0;
 }
 
 ul.social li{
-float: left;
-font-size: 12px;
-text-align: center;
+	float: left;
+	font-size: 12px;
+	text-align: center;
 }
 
 ul.social li a{
-color: #e0491a;
-text-decoration: none;
-width: 90px;
-height:24px;
-float: left;
-padding-top: 36px;
-text-align: center;
--webkit-border-radius: 4px;
-border-radius: 4px;
-margin-bottom: 20px;
-margin-right: 20px;
+	color: #e0491a;
+	text-decoration: none;
+	width: 90px;
+	height:24px;
+	float: left;
+	padding-top: 36px;
+	text-align: center;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom: 20px;
+	margin-right: 20px;
 }
 
 ul.social li a:hover{
-color: #ffffff;
+	color: #ffffff;
 }
 
 
 ul.social li a.googleplus{
-background: #ffffff url(../images/social.png) 34px -74px no-repeat;
+	background: #ffffff url(../images/social.png) 34px -74px no-repeat;
 }
 
 ul.social li a:hover.googleplus{
-background: #e0491a url(../images/social.png) -43px -74px no-repeat;
+	background: #e0491a url(../images/social.png) -43px -74px no-repeat;
 }
 
 ul.social li a.twitter{
-background: #ffffff url(../images/social.png) 34px 10px no-repeat;
+	background: #ffffff url(../images/social.png) 34px 10px no-repeat;
 }
 
 ul.social li a:hover.twitter{
-background: #e0491a url(../images/social.png) -43px 10px no-repeat;
+	background: #e0491a url(../images/social.png) -43px 10px no-repeat;
 }
 
 ul.social li a.facebook{
-background: #ffffff url(../images/social.png) 38px -157px no-repeat;
+	background: #ffffff url(../images/social.png) 38px -157px no-repeat;
 }
 
 ul.social li a:hover.facebook{
-background: #e0491a url(../images/social.png) -39px -157px no-repeat;
+	background: #e0491a url(../images/social.png) -39px -157px no-repeat;
 }
 
 ul.social li a.email{
-background: #ffffff url(../images/social.png) 34px -413px no-repeat;
+	background: #ffffff url(../images/social.png) 34px -413px no-repeat;
 }
 
 ul.social li a:hover.email{
-background: #e0491a url(../images/social.png) -43px -413px no-repeat;
+	background: #e0491a url(../images/social.png) -43px -413px no-repeat;
 }
 
 ul.social li a.youtube{
-background: #ffffff url(../images/social.png) 34px -242px no-repeat;
+	background: #ffffff url(../images/social.png) 34px -242px no-repeat;
 }
 
 ul.social li a:hover.youtube{
-background: #e0491a url(../images/social.png) -43px -242px no-repeat;
+	background: #e0491a url(../images/social.png) -43px -242px no-repeat;
 }
 
 ul.social li a.pinterest{
-background: #ffffff url(../images/social.png) 34px -327px no-repeat;
+	background: #ffffff url(../images/social.png) 34px -327px no-repeat;
 }
 
 ul.social li a:hover.pinterest{
-background: #e0491a url(../images/social.png) -43px -327px no-repeat;
+	background: #e0491a url(../images/social.png) -43px -327px no-repeat;
 }
 
 .copyright p{
-font-size: 10px;
-color: #666666;
+	font-size: 10px;
+	color: #666666;
 }
 
 .copyright p span{
-font-size: 10px;
-color: #e0491a;
+	font-size: 10px;
+	color: #e0491a;
 }
 
 p.c_soon{
-color: #e0491a;
-font-size: 30px;
-font-weight: 200;
-line-height: 40px;
+	color: #e0491a;
+	font-size: 30px;
+	font-weight: 200;
+	line-height: 40px;
 }
 
 #social_links ul{
@@ -179,8 +171,7 @@ line-height: 40px;
 
 @media only screen and (max-width:550px){
 	a.get_notified{
-		width: 300px;
-		
+		width: 300px;	
 		font-size: 18px;
 		border-radius: 25px;
 	}
@@ -262,5 +253,3 @@ line-height: 40px;
     overflow: hidden;
     background-color: white;
 }
-
-
